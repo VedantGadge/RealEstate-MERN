@@ -1,38 +1,38 @@
 [
   {
-    "name": "Aliva Priva Jardin",
-    "price": "47,043",
-    "detail": "Jakarta Garden City Street, Cakung. Pulo Gadung, Jakarta Timur, DKI Jakarta",
+    "name": "Greenwood Estate",
+    "price": "320,000",
+    "detail": "45 Oakwood Drive, Brooklyn, New York, USA",
     "image": "./r1.png"
   },
   {
-    "name": "Asatti Garden City",
-    "price": "66,353",
-    "detail": "Pahlawan Street XVII No.215, Cinangka, Sawangan, Depok, Jawa Barat",
+    "name": "Cambridge Gardens",
+    "price": "550,000",
+    "detail": "19 King's Parade, Cambridge, United Kingdom",
     "image": "./r2.png"
   },
   {
-    "name": "Citralan Puri Serang",
-    "price": "35,853",
-    "detail": "Ruko Puri Indah Residence Block A7, Lingkar Street, Ciracas, Serang, Banten",
+    "name": "Riverside Villas",
+    "price": "410,000",
+    "detail": "Via Roma 12, Trastevere, Rome, Italy",
     "image": "./r3.png"
   },
   {
-    "name": "Aliva Priva Jardin",
-    "price": "47,043",
-    "detail": "Jakarta Garden City Street, Cakung. Pulo Gadung, Jakarta Timur, DKI Jakarta",
+    "name": "Aspen Creek Residence",
+    "price": "390,000",
+    "detail": "134 Aspen Way, Denver, Colorado, USA",
     "image": "./r1.png"
   },
   {
-    "name": "Asatti Garden City",
-    "price": "66,353",
-    "detail": "Pahlawan Street XVII No.215, Cinangka, Sawangan, Depok, Jawa Barat",
+    "name": "Westminster Heights",
+    "price": "620,000",
+    "detail": "88 Westminster Bridge Road, London, United Kingdom",
     "image": "./r2.png"
   },
   {
-    "name": "Citralan Puri Serang",
-    "price": "35,853",
-    "detail": "Ruko Puri Indah Residence Block A7, Lingkar Street, Ciracas, Serang, Banten",
+    "name": "Alpine Meadow Homes",
+    "price": "460,000",
+    "detail": "28 Dorfstrasse, Zermatt, Switzerland",
     "image": "./r3.png"
   }
 ]

@@ -1,0 +1,32 @@
+.c-container{
+    justify-content: space-between;
+}
+
+.c-container>div{
+    flex: 1;
+}
+
+.c-right{
+    width: 100%;
+}
+
+.c-left{
+    gap: .5rem;
+}
+
+.contactModes{
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.contactModes .row{
+    gap: 1.5rem;
+}
+
+.mode{
+    width: 16rem;
+    padding: 1rem;
+    border: .8px solid rgba(128, 128, 128, .143);
+    border-radius: 5px;
+    gap: 1rem;
+}
