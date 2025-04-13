@@ -6,3 +6,10 @@
 .c-container>img{
     width: 9rem;
 }
+
+
+@media (max-width: 480px) {
+    .c-container>img {
+        width: 4rem;
+    }
+}

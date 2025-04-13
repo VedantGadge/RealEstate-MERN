@@ -78,3 +78,90 @@
     color: white;
     scale: 0.875;
   }
+
+
+@media (max-width: 1024px) {
+  .c-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .c-right {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .c-right img {
+    height: 400px;
+    max-width: 100%;
+  }
+
+  .c-left {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactModes {
+    align-items: center; /* Center the contact modes container */
+    width: 100%;
+  }
+
+  .contactModes .row {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%; /* Take full width */
+    align-items: center; /* Center the rows */
+  }
+
+  .mode {
+    width: 90%; /* Slightly less than full width for better appearance */
+    max-width: 400px; /* Prevent modes from becoming too wide */
+    
+  }
+
+  .mode:hover {
+    scale: 1.02;
+  }
+
+  .c-right img {
+    height: 300px;
+  }
+
+  /* Center the content inside each mode */
+  .mode > :nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mode .button {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .c-container {
+    flex-direction: column;
+  }
+  .c-right {
+    justify-content: center;
+  }
+}
+@media (max-width: 1024px)
+{
+    .contactModes{
+        width: 100%;
+    }
+    .row{
+        flex-direction: column;
+        width: 100%;
+    }
+    .mode{
+        width: 100%;
+    }
+}
