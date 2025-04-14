@@ -7,10 +7,7 @@ const useProperties = () => {
         "allProperties",
         getAllProperties,
         {
-            refetchOnMount: true,
-            refetchOnWindowFocus: false,
-            cacheTime: 0, // Disable caching
-            staleTime: 0, // Consider data stale immediately
+            refetchOnWindowFocus: false, 
         }
     );
 

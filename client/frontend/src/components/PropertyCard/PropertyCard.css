@@ -5,6 +5,7 @@
     max-width: 15rem; /* Set fixed max-width for the card */
     margin: auto;
     transition: all 300ms ease-in;
+    position: relative;
 }
 
 .r-card>svg{
@@ -17,8 +18,8 @@
 
 
 .r-card>img{
-    width: 100%;
-    max-width: 15rem;
+    width: 13rem;
+    height: 10rem;
 }
 
 .r-card>:nth-child(3){
