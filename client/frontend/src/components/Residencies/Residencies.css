@@ -7,6 +7,10 @@
     margin-bottom: 2rem;
 }
 
+.swiper {
+    width: 70rem;
+    padding: 1rem;
+}
 
 
 .swiper-horizontal{
@@ -17,7 +21,7 @@
     position: absolute;
     gap: 1rem;
     top: -4rem;
-    right: 0;
+    right: 10rem;
 }
 
 .r-buttons button{
