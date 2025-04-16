@@ -7,6 +7,7 @@ import { AiFillHeart, AiTwotoneCar } from "react-icons/ai";
 import { FaBed, FaShower } from "react-icons/fa";
 import {MdLocationPin} from 'react-icons/md';
 import "./Property.css";
+import Map from "../../components/Map/Map.jsx";
 
 const Property = () => {
   const { pathname } = useLocation(); // gives us the current URL
@@ -101,7 +102,9 @@ const Property = () => {
             </div>
         </div>
 
-        <div className="right">This is the right side</div>
+        <div className="map">
+          <Map address={data?.address} city={data?.city} country={data?.country}/>
+        </div>
         </div>
         </div>
     </div>
