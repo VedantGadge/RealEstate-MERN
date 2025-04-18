@@ -9,8 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "2.0.1",
+    "@mantine/core": "^7.17.4",
+    "@mantine/dates": "^7.17.4",
+    "@mantine/form": "^7.17.4",
+    "@mantine/hooks": "^7.17.4",
     "axios": "^1.8.4",
     "dayjs": "^1.11.13",
+    "esri-leaflet": "^3.0.15",
+    "esri-leaflet-geocoder": "2.3.3",
     "framer-motion": "^10.8.5",
     "leaflet": "^1.9.4",
     "loadash": "^1.0.0",

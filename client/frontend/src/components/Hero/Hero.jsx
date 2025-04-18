@@ -32,7 +32,7 @@ const Hero = () => {
           </div>
           <SearchBar />
 
-          <dix className="flexCenter stats">
+          <div className="flexCenter stats">
             <div className="flexColCenter stat">
               <span>
                 <CountUp start={800} end={900} duration={3} />
@@ -56,7 +56,7 @@ const Hero = () => {
               </span>
               <span className="secondaryText">Award Winings</span>
             </div>
-          </dix>
+          </div>
         </div>
 
         {/* right side */}

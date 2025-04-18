@@ -3,9 +3,12 @@ import "./Header.css";
 import { BiMenuAltRight } from "react-icons/bi";
 import OutsideClickHandler from "react-outside-click-handler";
 import { NavLink, Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
 
   const getMenuPosition = (menuOpen) => {
     if (document.documentElement.clientWidth <= 800) {
@@ -29,7 +32,12 @@ const Header = () => {
             <a href="mailto:vedant.gadgegsis@gmail.com">Contact</a>
 
             {/* login button */}
-            <button className="button">Login</button>
+            {
+              !isAuthenticated ?
+              <button className="button" onClick={loginWithRedirect}>
+                Login
+              </button> : <div><ProfileMenu user={user} logout={logout}/></div>
+            }
           </div>
         </OutsideClickHandler>
         <div className="menu-icon" onClick={() => setMenuOpen((prev) => !prev)}>
