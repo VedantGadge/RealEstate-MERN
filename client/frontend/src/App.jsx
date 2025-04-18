@@ -23,7 +23,7 @@ function App() {
   });
   return (
     <UserDetailContext.Provider value={{userDetails, setUserDetails}}>
-    <MantineProvider>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Suspense fallback={<div>Loading...</div>}>

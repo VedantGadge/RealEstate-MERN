@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { getProperty } from "../../utils/api";
 import { PuffLoader } from "react-spinners";
 import { AiFillHeart, AiTwotoneCar } from "react-icons/ai";
 import { FaBed, FaShower } from "react-icons/fa";
-import {MdLocationPin} from 'react-icons/md';
+import { MdLocationPin } from "react-icons/md";
 import "./Property.css";
 import Map from "../../components/Map/Map.jsx";
+import useAuthCheck from "../../hooks/useAuthCheck.jsx";
+import { useAuth0 } from "@auth0/auth0-react";
+import BookingModal from "../../components/BookingModal/BookingModal.jsx";
 
 const Property = () => {
   const { pathname } = useLocation(); // gives us the current URL
@@ -15,6 +18,10 @@ const Property = () => {
   const { data, isLoading, isError } = useQuery(["resid", id], () =>
     getProperty(id)
   );
+
+  const {user} = useAuth0();
+  const [modalOpened, setModalOpened] = useState(false);
+  const { validateLogin } = useAuthCheck();
 
   if (isLoading) {
     return (
@@ -29,7 +36,7 @@ const Property = () => {
   if (isError) {
     return (
       <div className="wrapper">
-        <div className="flecCenter paddings">
+        <div className="flexCenter paddings">
           <span>Error while fetching the property details</span>
         </div>
       </div>
@@ -42,7 +49,7 @@ const Property = () => {
       <div className="flexColStart paddings innerWidth property-container">
         {/* like button */}
         <div className="like">
-          <AiFillHeart size={20} color="white"/>
+          <AiFillHeart size={20} color="white" />
         </div>
 
         {/* image */}
@@ -54,7 +61,7 @@ const Property = () => {
             {/* head */}
             <div className="flexStart head">
               <span className="primaryText">{data?.title}</span>
-              <span className="orangeText" style={{ fontSize: "1.5rem" }}>
+              <span className="orangeText price" style={{ fontSize: "1.5rem" }}>
                 $ {data?.price}
               </span>
             </div>
@@ -91,22 +98,38 @@ const Property = () => {
             <div className="flexStart" style={{ gap: "1rem" }}>
               <MdLocationPin size={25} />
               <span className="secondaryText">
-                {data?.address}{" "}
-                {data?.city}{" "}
-                {data?.country}
+                {data?.address} {data?.city} {data?.country}
               </span>
             </div>
 
-            <div className="button">
+            <button
+              className="button"
+              onClick={() => {
+                if (validateLogin()) {
+                  setModalOpened(true); // Open the modal only if the user is authenticated
+                }
+              }}
+            >
               Book your visit
-            </div>
-        </div>
+            </button>
 
-        <div className="map">
-          <Map address={data?.address} city={data?.city} country={data?.country}/>
+            <BookingModal
+              opened={modalOpened}
+              setOpened={setModalOpened}
+              propertyId={id}
+              email={user?.email}
+            />
+          </div>
+
+          <div className="map">
+            <Map
+              address={data?.address}
+              city={data?.city}
+              country={data?.country}
+            />
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     </div>
   );
 };

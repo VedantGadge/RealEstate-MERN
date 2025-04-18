@@ -5,24 +5,27 @@ import { Outlet } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import UserDetailContext from "../../context/UserDetailsContext";
 import { useMutation } from "react-query";
+import { createUser } from "../../utils/api";
+import { toast } from "react-toastify";
 
 const Layout = () => {
+  const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
+  const { setUserDetails } = useContext(UserDetailContext);
 
-  const {isAuthenticated, user} = useAuth0()
-  const {setUserDetails} = useContext(UserDetailContext)
-
-  const {mutate} = useMutation({
+  const { mutate } = useMutation({
     mutationKey: [user?.email],
-    mutationFn: ()=>createUser(user?.email)
-  })
+    mutationFn: (token) => createUser(user?.email, token),
+  });
 
-  useEffect(()=>{},[isAuthenticated])
+  useEffect(() => {
+    isAuthenticated && mutate();
+  }, [isAuthenticated]);
 
   return (
     <>
-      <div style={{background: "var(--black",overflow: "hidden"}}>
+      <div style={{ background: "var(--black", overflow: "hidden" }}>
         <Header />
-        <Outlet/>
+        <Outlet />
       </div>
       <Footer />
     </>

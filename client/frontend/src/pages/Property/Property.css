@@ -18,6 +18,10 @@
     object-fit: cover;
 }
 
+.price{
+    white-space: nowrap;
+}
+
 .property-details{
     width: 100%;
     gap: 2rem;
