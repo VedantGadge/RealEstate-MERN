@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { getProperty } from "../../utils/api";
@@ -11,6 +11,7 @@ import Map from "../../components/Map/Map.jsx";
 import useAuthCheck from "../../hooks/useAuthCheck.jsx";
 import { useAuth0 } from "@auth0/auth0-react";
 import BookingModal from "../../components/BookingModal/BookingModal.jsx";
+import UserDetailContext from "../../context/UserDetailsContext.js";
 
 const Property = () => {
   const { pathname } = useLocation(); // gives us the current URL
@@ -22,6 +23,11 @@ const Property = () => {
   const {user} = useAuth0();
   const [modalOpened, setModalOpened] = useState(false);
   const { validateLogin } = useAuthCheck();
+
+  const {
+    userDetails: { token , bookings},
+    setUserDetails,
+  } = useContext(UserDetailContext);
 
   if (isLoading) {
     return (
@@ -43,7 +49,6 @@ const Property = () => {
     );
   }
 
-  console.log(data);
   return (
     <div className="wrapper">
       <div className="flexColStart paddings innerWidth property-container">

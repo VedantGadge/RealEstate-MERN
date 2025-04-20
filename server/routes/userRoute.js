@@ -3,7 +3,7 @@ import { allFavourites, bookVisit, cancelBooking, createUser, getAllBookings, to
 import jwtCheck from '../config/auth0Config.js'
 const router = express.Router()
 
-router.post('/register', createUser) //we are placing jwtCheck as a middleware , means  new user will pass through jwtCheck then will go to createUser fn
+router.post('/register',jwtCheck, createUser) //we are placing jwtCheck as a middleware , means  new user will pass through jwtCheck then will go to createUser fn
 router.post("/bookvisit/:id", bookVisit)
 router.post("/allBookings", getAllBookings)
 router.post("/cancelBooking/:id", cancelBooking)

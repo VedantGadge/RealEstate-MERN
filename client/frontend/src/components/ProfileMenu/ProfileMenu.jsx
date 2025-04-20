@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Menu } from "@mantine/core";
 
 const ProfileMenu = ({user, logout}) => {
-    console.log("User object:", user); 
+
   return (
     <Menu>
       <Menu.Target>
