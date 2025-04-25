@@ -6,6 +6,8 @@ import { useMutation } from "react-query";
 import UserDetailContext from "../../context/UserDetailsContext";
 import { bookVisit } from "../../utils/api";
 import { toast } from "react-toastify";
+import dayjs from "dayjs";
+import '../../App.css'
 
 const BookingModal = ({ opened, setOpened, email, propertyId }) => {
   const [value, setValue] = useState(null);
@@ -21,7 +23,7 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
     setUserDetails((prev) => ({
       //we are taking the prev state as prop and are storing the booking ans setting the state of the update booking array of the User
       ...prev,
-      booking: [
+      bookings: [
         ...prev.bookings,
         {
           id: propertyId,
@@ -31,11 +33,12 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
     }));
   };
   const { mutate, isLoading } = useMutation({
-    mutationFn: () => bookVisit(value, propertyId, email, setOpened, token),
-    onSuccess: () => handleBookingSuccess(),
-    onerror: ({ res }) => toast.error(res.data.message),
-    onSettled: () => setOpened(false),
-  });
+  mutationFn: () => bookVisit(dayjs(value).format('YYYY-MM-DD'), propertyId, email, setOpened, token),
+  onSuccess: () => handleBookingSuccess(),
+  onError: ({ response }) => toast.error(response?.data?.message || "Booking failed!"),
+  onSettled: () => setOpened(false),
+});
+
   return (
     <Modal
       opened={opened}
@@ -44,7 +47,17 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
       centered
     >
       <div className="flexColCenter">
-        <DatePicker value={value} onChange={setValue} minDate={new Date()} />
+        <DatePicker
+          value={value}
+          onChange={(val) => {
+            setValue(val);
+          }}
+          minDate={new Date()}
+          classNames={{
+            day: "custom-day", // apply custom class to all day buttons
+          }}
+        />
+
         <Button disabled={!value || isLoading} onClick={() => mutate()}>
           Book Visit
         </Button>

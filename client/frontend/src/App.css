@@ -17,3 +17,8 @@
     filter: blur(100px);
     border-radius: 100px;
 }
+
+.custom-day[data-selected="true"] {
+    background-color: #228be6 !important;
+  }
+  
