@@ -14,6 +14,7 @@ import BookingModal from "../../components/BookingModal/BookingModal.jsx";
 import UserDetailContext from "../../context/UserDetailsContext.js";
 import { Button } from "@mantine/core";
 import { toast } from "react-toastify";
+import Heart from "../../components/Heart/Heart.jsx";
 
 const Property = () => {
   const { pathname } = useLocation(); // gives us the current URL
@@ -66,7 +67,7 @@ const Property = () => {
       <div className="flexColStart paddings innerWidth property-container">
         {/* like button */}
         <div className="like">
-          <AiFillHeart size={20} color="white" />
+          <Heart id={id}/>
         </div>
 
         {/* image */}

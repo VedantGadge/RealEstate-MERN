@@ -70,8 +70,8 @@ export const bookVisit = async (date, propertyId, email, token) => {
     }
 }
 
-export const removeBooking = async (id,email,token) => {
-    try{
+export const removeBooking = async (id, email, token) => {
+    try {
 
         await api.post(
             `/user/cancelBooking/${id}`,
@@ -84,8 +84,74 @@ export const removeBooking = async (id,email,token) => {
                 },
             }
         );
-    }catch(err){
+    } catch (err) {
         toast.error("Something went wrong, Please try again");
+        throw err
+    }
+}
+
+export const toFav = async (id, email, token) => {
+    try {
+        await api.post(
+            `user/toFavourites/${id}`,
+
+            {
+                email,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+    } catch (err) {
+        throw err
+    }
+}
+
+export const getAllFav = async (email, token) => {
+    if (!token) return
+    try {
+
+        const res = await api.post(
+            `/user/allFavourites`,
+            {
+                email,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        )
+
+        return res.data["favResidenciesID"]
+    } catch (err) {
+        toast.err("Something went wrong while fetching favourites")
+        throw err
+    }
+}
+
+export const getAllBookings = async (email, token) => {
+     
+        if (!token) return
+        try {
+    
+            const res = await api.post(
+                `/user/allBookings`,
+                {
+                    email,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+    
+            return res.data["bookedVisits"]
+    } catch (err) { 
+        toast.err("Something went wrong while fetching bookings")
         throw err
     }
 }
