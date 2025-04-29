@@ -39,32 +39,29 @@ const Value = () => {
             preExpanded={[0]}
           >
             {data.map((item, i) => {
-                const [className, setClassName] = useState(null);
               return (
-                <AccordionItem className={`accordionItem ${className}`} key={i} uuid={i}>
-                  {/*using uuid so that the preExpanded index can be used*/}
-                  <AccordionItemHeading>
-                    <AccordionItemButton className="flexCenter accordionButton">
-                      <AccordionItemState>
-                        {({ expanded }) =>
-                          expanded
-                            ? setClassName("expanded")
-                            : setClassName("collapsed")
-                        }
-                      </AccordionItemState>
+                <AccordionItemState key={i}>
+                  {({ expanded }) => {
+                    const className = expanded ? "expanded" : "collapsed";
+                    return (
+                      <AccordionItem className={`accordionItem ${className}`} uuid={i}>
+                        <AccordionItemHeading>
+                          <AccordionItemButton className="flexCenter accordionButton">
+                            <div className="flexCenter icon">{item.icon}</div>
+                            <span className="primaryText">{item.heading}</span>
+                            <div className="flexCenter icon">
+                              <MdOutlineArrowDropDown size={20} />
+                            </div>
+                          </AccordionItemButton>
+                        </AccordionItemHeading>
 
-                      <div className="flexCenter icon">{item.icon}</div>
-                      <span className="primaryText">{item.heading}</span>
-                      <div className="flexCenter icon">
-                        <MdOutlineArrowDropDown size={20} />
-                      </div>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-
-                  <AccordionItemPanel>
-                    <p className="secondaryText">{item.detail}</p>
-                  </AccordionItemPanel>
-                </AccordionItem>
+                        <AccordionItemPanel>
+                          <p className="secondaryText">{item.detail}</p>
+                        </AccordionItemPanel>
+                      </AccordionItem>
+                    );
+                  }}
+                </AccordionItemState>
               );
             })}
           </Accordion>
