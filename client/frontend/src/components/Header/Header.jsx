@@ -6,26 +6,24 @@ import { NavLink, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import AddPropertyModal from "../AddPropertyModal/addPropertyModal";
-import useAuthCheck from "../../hooks/useAuthCheck.jsx"
-
+import useAuthCheck from "../../hooks/useAuthCheck.jsx";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpened, setModalOpened] = useState(false);
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
-
   const getMenuPosition = (menuOpen) => {
     if (document.documentElement.clientWidth <= 800) {
       return { right: !menuOpen && "-100%" }; //this sets the position of the menu out of the screen depending upon the value of menuOpen
     }
   };
 
-  const {validateLogin} = useAuthCheck()
+  const { validateLogin } = useAuthCheck();
   const handleAddPropertyClick = () => {
-    if(validateLogin()){
-      setModalOpened(true)
+    if (validateLogin()) {
+      setModalOpened(true);
     }
-  }
+  };
   return (
     <section className="h-wrapper">
       <div className="flexCenter paddings inner-width h-container">
