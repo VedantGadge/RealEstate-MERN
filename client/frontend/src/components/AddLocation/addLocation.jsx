@@ -26,7 +26,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
     const { hasErrors } = form.validate();
     if (!hasErrors) {
       setPropertyDetails((prev) => ({ ...prev, city, country, address }));
-      nextStep();
+      nextStep(); // Advance to the next step
     }
   };
 
@@ -46,7 +46,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
           flexDirection: "row",
         }}
       >
-        {/* left side */}
+        {/* Left side */}
         <div className="flexColStart" style={{ flex: 1, gap: "1rem" }}>
           <Select
             w={"100%"}
@@ -73,7 +73,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
           />
         </div>
 
-        {/* right side */}
+        {/* Right side */}
         <div style={{ flex: 1 }}>
           <Map address={address} city={city} country={country} />
         </div>
