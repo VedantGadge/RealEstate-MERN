@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "@mantine/form";
 import { Button, Group, Select, TextInput } from "@mantine/core";
 import useCountries from "../../hooks/useCountries";
@@ -26,7 +25,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
     const { hasErrors } = form.validate();
     if (!hasErrors) {
       setPropertyDetails((prev) => ({ ...prev, city, country, address }));
-      nextStep(); // Advance to the next step
+      nextStep(); 
     }
   };
 
@@ -80,7 +79,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
       </div>
 
       <Group position="center" mt="xl">
-        <Button type="submit">Next Step</Button>
+        <Button type="submit">Next</Button>
       </Group>
     </form>
   );
