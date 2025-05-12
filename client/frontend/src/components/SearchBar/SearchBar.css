@@ -1,0 +1,4 @@
+.search-bar input::placeholder {
+  color: #b0b0b0; 
+  opacity: 0.7;   
+}

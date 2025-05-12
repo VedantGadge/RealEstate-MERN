@@ -1,14 +1,19 @@
 import SearchBar from "../../components/SearchBar/SearchBar";
-import "./Properties.css";
+import "../Properties/Properties.css";
 import useProperties from "../../hooks/useProperties";
 import { PuffLoader } from "react-spinners";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import { useSearchParams } from "react-router-dom";
+import { useContext } from "react";
+import UserDetailContext from "../../context/UserDetailsContext";
+import { property } from "lodash";
 
-const Properties = () => {
+const Bookings = () => {
   const { data, isError, isLoading } = useProperties();
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = searchParams.get("filter") || "";
+  const { userDetails } = useContext(UserDetailContext);
+  const bookings = userDetails?.bookings || [];
 
   const handleSetFilter = (value) => {
     setSearchParams({ filter: value });
@@ -42,6 +47,7 @@ const Properties = () => {
 
         <div className="paddings flexCenter properties">
           {data
+            .filter((property)=>bookings.map((booking)=>booking.id).includes(property.id))
             .filter(
               (property) =>
                 property.title.toLowerCase().includes(filter.toLowerCase()) ||
@@ -57,4 +63,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default Bookings;

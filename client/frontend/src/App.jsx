@@ -13,6 +13,8 @@ import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "../src/context/UserDetailsContext.js"
 import UserDetailContext from "../src/context/UserDetailsContext.js";
+import Bookings from "./pages/Bookings/Bookings.jsx";
+import Favourites from "./pages/Favourites/Favourites.jsx";
 
 function App() {
   const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ function App() {
                   <Route path=":propertyId" element={<Property />} />{" "}
                   {/*if there is any Id appended after the "/properties" path then set path as <Property/> or else the index default <Properties/> */}
                 </Route>
+                <Route path="/bookings" element={<Bookings/>}/>
+                <Route path="/favourites" element={<Favourites/>}/>
               </Route>
             </Routes>
           </Suspense>

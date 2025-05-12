@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Hero.css";
 import CountUp from "react-countup";
-import { animate, easeIn, motion, spring } from "framer-motion";
+import { motion } from "framer-motion";
 import SearchBar from "../SearchBar/SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const [filter, setFilter] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (searchValue) => {
+    navigate(`/properties?filter=${encodeURIComponent(searchValue)}`);
+  };
+
   return (
     <section className="hero-wrapper">
       <div className="paddings innerWidth flexCenter hero-container">
@@ -30,7 +38,7 @@ const Hero = () => {
               Forget all difficulties in finding a residence for yourself.
             </span>
           </div>
-          <SearchBar />
+          <SearchBar filter={filter} setFilter={setFilter} onSearch={handleSearch} />
 
           <div className="flexCenter stats">
             <div className="flexColCenter stat">

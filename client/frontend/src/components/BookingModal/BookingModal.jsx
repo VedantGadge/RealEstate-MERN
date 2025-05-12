@@ -1,7 +1,7 @@
 import { Button, Modal } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import "@mantine/dates/styles.css";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useMutation } from "react-query";
 import UserDetailContext from "../../context/UserDetailsContext";
 import { bookVisit } from "../../utils/api";
@@ -21,10 +21,9 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
       position: "bottom-right",
     });
     setUserDetails((prev) => ({
-      //we are taking the prev state as prop and are storing the booking ans setting the state of the update booking array of the User
       ...prev,
       bookings: [
-        ...prev.bookings,
+        ...(prev.bookings || []),
         {
           id: propertyId,
           date: dayjs(value).format("DD/MM/YYYY"),
