@@ -8,7 +8,7 @@
 }
 
 .swiper {
-    width: 70rem;
+     width: 100%;
     padding: 1rem;
 }
 
@@ -21,7 +21,7 @@
     position: absolute;
     gap: 1rem;
     top: -4rem;
-    right: 10rem;
+    right: 9rem;
 }
 
 .r-buttons button{
