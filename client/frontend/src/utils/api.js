@@ -3,7 +3,7 @@ import dayjs from 'dayjs' //A lightweight date manipulation library
 import { toast } from 'react-toastify' //A toast notification library for React
 
 export const api = axios.create({
-    baseURL: "http://localhost:8000/api"
+    baseURL: "https://real-estate-mern-theta.vercel.app/api"
 })
 
 export const getAllProperties = async () => {
