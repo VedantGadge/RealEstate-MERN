@@ -1,0 +1,43 @@
+/* Adjust modal size for smaller screens */
+@media (max-width: 768px) {
+  .mantine-Modal-modal {
+    width: 90% !important; /* Reduce modal width */
+    max-width: 400px; /* Ensure it doesn't get too wide */
+    padding: 1rem; /* Add padding for better spacing */
+  }
+
+  .mantine-Container-root {
+    height: auto !important; /* Allow the container to grow with content */
+    width: 100% !important;
+  }
+
+  .mantine-Stepper-root {
+    flex-direction: column !important; /* Stack the stepper vertically */
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+
+  .mantine-Stepper-step {
+    flex-direction: row !important; /* Keep stepper items horizontal */
+    align-items: center !important;
+    gap: 0.5rem;
+  }
+
+  .mantine-Stepper-stepLabel {
+    font-size: 0.9rem !important; /* Adjust font size for smaller screens */
+  }
+
+  .mantine-Stepper-stepDescription {
+    font-size: 0.8rem !important; /* Adjust description font size */
+  }
+
+  /* Adjust form fields */
+  .mantine-Input-wrapper {
+    width: 100% !important; /* Ensure inputs take full width */
+  }
+
+  .leaflet-container {
+    width: 100% !important; /* Ensure map fits the container */
+    height: 200px !important; /* Adjust map height for mobile */
+  }
+}
