@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Modal, Stepper } from "@mantine/core";
 import AddLocation from "../AddLocation/addLocation";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -22,8 +22,18 @@ const AddPropertyModal = ({ opened, setOpened }) => {
       parkings: 0,
       bathrooms: 0,
     },
-    userEmail: user?.email,
+    userEmail: "",
   });
+
+  // Update userEmail when user loads
+  useEffect(() => {
+    if (user?.email) {
+      setPropertyDetails((prev) => ({
+        ...prev,
+        userEmail: user.email,
+      }));
+    }
+  }, [user]);
 
   const nextStep = () => {
     setActive((current) => (current < 3 ? current + 1 : current));
