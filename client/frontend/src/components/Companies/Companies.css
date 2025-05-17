@@ -34,3 +34,18 @@
         max-width: 5.5rem;
     }
 }
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .c-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .c-container > img {
+    width: 7rem;
+    max-width: 90%;
+  }
+}
